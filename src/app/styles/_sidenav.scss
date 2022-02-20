@@ -2,6 +2,9 @@
 
 mat-sidenav-container {
   height: 100%;
+  border: 1px colors.$marine;
+  border-width: 0.5px;
+  box-shadow: none;
 }
 
 .sidenav,
@@ -9,19 +12,66 @@ mat-sidenav-content {
   padding: 1rem;
 }
 
+#sidenav-content {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 50px 1fr;
+  padding: 0px;
+}
+
+#employee-grid-title {
+  padding: 54px 0px 0px 90px;
+  margin-bottom: 20px;
+  align-self: flex-end;
+}
+
 .sidenav {
   background-color: colors.$marine;
-  width: 15vw;
   border-right: 0;
+  width: 15vw;
+}
+
+.toggle-button-container {
+  margin: 0;
+  padding: 0;
+  position: sticky;
+  top: -10px;
+  max-width: fit-content;
+}
+
+.inverse-border-radius-bot,
+.inverse-border-radius-top {
+  border: none;
 }
 
 .mat-flat-button {
+  position: sticky;
   background-color: colors.$marine !important;
   color: white;
-  top: 20px;
-  left: -16px;
-  height: 40px;
+  top: 10px;
+  left: -26px;
+  height: 48px;
   min-width: auto;
-  font-size: 20px;
-  border-radius: 0px 4px 4px 0px;
+  font-size: 1.325rem;
+  border-radius: 0px 15px 15px 0px;
+}
+
+.inverse-border-radius-bot {
+  background-color: transparent;
+  width: 20px;
+  height: 40px;
+  position: sticky;
+  left: -26px;
+  border-radius: 15px 0px 0px 0px;
+  box-shadow: 0 -15px 0 0 colors.$marine;
+}
+
+.inverse-border-radius-top {
+  width: 20px;
+  height: 40px;
+  position: sticky;
+  left: 0px;
+  background-color: transparent;
+  border-radius: 0px 0px 0px 15px;
+  box-shadow: -10px 10px 0 10px colors.$marine;
 }
