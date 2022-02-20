@@ -15,12 +15,13 @@ mat-sidenav-content {
   border-right: 0;
 }
 
-#btn-toggle-sidenav {
+.mat-flat-button {
   background-color: colors.$marine !important;
   color: white;
   top: 20px;
-  left: -20px;
+  left: -16px;
   height: 40px;
-  width: 40px;
+  min-width: auto;
   font-size: 20px;
+  border-radius: 0px 4px 4px 0px;
 }
