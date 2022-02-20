@@ -26,11 +26,21 @@
   }
   .employee-panel-header {
     .employee-img {
+      margin-left: 1.5rem;
       border-radius: 100%;
       height: 60px;
     }
     .employee-title {
-      padding-left: 20px;
+      width: 13.75rem;
+      color: colors.$marine;
+      padding-left: 2rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .employee-role {
+      padding-top: 0.3125rem;
+      padding-left: 2rem;
+      font-size: 1rem;
     }
     ::before {
       content: "";
