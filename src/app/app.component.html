@@ -1,3 +1,13 @@
-<div *ngFor="let employee of employees">
-  <div>{{ employee.name }}</div>
-</div>
+<mat-sidenav-container>
+  <mat-sidenav [(opened)]="opened">
+    <div class="branding-box">
+      <a href="/" class="branding-box-link">
+        <div id="branding" class="mat-display-1">hireboard</div>
+        <div id="color-line" class="mat-display-1">l</div>
+      </a>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <button (click)="opened = !opened">=</button>
+  </mat-sidenav-content>
+</mat-sidenav-container>
