@@ -1,5 +1,5 @@
 <mat-sidenav-container>
-  <mat-sidenav class="sidenav" mode="side" [(opened)]="opened">
+  <mat-sidenav #sidenav class="sidenav" mode="side" [(opened)]="opened">
     <div class="branding-box">
       <a href="/" class="branding-box-link">
         <div id="branding" class="mat-display-1">hireboard</div>
@@ -8,8 +8,42 @@
     </div>
   </mat-sidenav>
   <mat-sidenav-content id="sidenav-content">
-    <button mat-flat-button id="btn-toggle-sidenav" (click)="opened = !opened">
-      ≡
-    </button>
+    <div class="toggle-button-container">
+      <div class="inverse-border-radius-top"></div>
+      <button
+        mat-flat-button
+        id="btn-toggle-sidenav"
+        (click)="sidenav.toggle()"
+      >
+        ≡
+      </button>
+      <div class="inverse-border-radius-bot"></div>
+    </div>
+    <div class="main-content">
+      <div id="employee-grid-title" class="mat-subheading-1">Empleados</div>
+      <mat-grid-list class="employee-grid" cols="1" rowHeight="160px">
+        <mat-accordion class="employee-accordion">
+          <mat-expansion-panel
+            class="employee-panel"
+            *ngFor="let employee of employees"
+          >
+            <mat-expansion-panel-header
+              class="employee-panel-header"
+              collapsedHeight="80px"
+              expandedHeight="*"
+            >
+              <mat-panel-title class="employee-panel-title">
+                <img
+                  class="employee-img"
+                  src="{{ employee.imgUrl }}"
+                  alt="{{ employee.name }}"
+                />
+                <span class="employee-title">{{ employee.name }}</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </mat-grid-list>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
