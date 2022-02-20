@@ -1,5 +1,5 @@
 <mat-sidenav-container>
-  <mat-sidenav [(opened)]="opened">
+  <mat-sidenav class="sidenav" mode="side" [(opened)]="opened">
     <div class="branding-box">
       <a href="/" class="branding-box-link">
         <div id="branding" class="mat-display-1">hireboard</div>
@@ -7,7 +7,12 @@
       </a>
     </div>
   </mat-sidenav>
-  <mat-sidenav-content>
-    <button (click)="opened = !opened">=</button>
+  <mat-sidenav-content id="sidenav-content">
+    <mat-button-toggle
+      disableRipple="true"
+      id="btn-toggle-sidenav"
+      (click)="opened = !opened"
+      >≡</mat-button-toggle
+    >
   </mat-sidenav-content>
 </mat-sidenav-container>
