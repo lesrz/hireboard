@@ -8,11 +8,8 @@
     </div>
   </mat-sidenav>
   <mat-sidenav-content id="sidenav-content">
-    <mat-button-toggle
-      disableRipple="true"
-      id="btn-toggle-sidenav"
-      (click)="opened = !opened"
-      >≡</mat-button-toggle
-    >
+    <button mat-flat-button id="btn-toggle-sidenav" (click)="opened = !opened">
+      ≡
+    </button>
   </mat-sidenav-content>
 </mat-sidenav-container>
