@@ -35,10 +35,11 @@
               <mat-panel-title class="employee-panel-title">
                 <img
                   class="employee-img"
-                  src="{{ employee.imgUrl }}"
-                  alt="{{ employee.name }}"
+                  src="{{ employee?.imgUrl }}"
+                  alt="{{ employee?.name }}"
                 />
-                <span class="employee-title">{{ employee.name }}</span>
+                <span class="employee-title">{{ employee?.name }}</span>
+                <span class="employee-role">{{ employee?.jobTitle }}</span>
               </mat-panel-title>
             </mat-expansion-panel-header>
           </mat-expansion-panel>
