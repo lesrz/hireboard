@@ -1,0 +1,36 @@
+@use "./colors";
+
+.branding-box {
+  padding: 20px 20px 0px 20px;
+}
+
+.branding-box,
+.branding-box-link {
+  display: flex;
+  width: fit-content;
+  max-height: fit-content;
+  position: relative;
+}
+
+.branding-box-link {
+  text-decoration: none;
+}
+
+#branding,
+#color-line {
+  margin: 0;
+  font-family: "Righteous";
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  user-select: none;
+}
+
+#color-line {
+  color: colors.$sky-celeste;
+  transform: scale(1.25, 1.02);
+  position: absolute;
+  cursor: pointer;
+  pointer-events: none;
+  user-select: none;
+}
