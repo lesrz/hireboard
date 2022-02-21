@@ -4,6 +4,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 
 const MaterialComponents = [
@@ -13,6 +14,7 @@ const MaterialComponents = [
   FormsModule,
   MatExpansionModule,
   MatGridListModule,
+  MatIconModule,
 ];
 
 @NgModule({
