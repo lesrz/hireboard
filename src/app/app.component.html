@@ -6,6 +6,34 @@
         <div id="color-line" class="mat-display-1">l</div>
       </a>
     </div>
+    <div class="side-toolbar">
+      <button mat-button>
+        <mat-icon>home</mat-icon>
+        <span class="toolbar-item-text">Inicio</span>
+      </button>
+      <button mat-button>
+        <mat-icon>people</mat-icon>
+        <span class="toolbar-item-text">Empleados</span>
+      </button>
+      <button mat-button>
+        <mat-icon>event_note</mat-icon>
+        <span class="toolbar-item-text">Proyectos</span>
+      </button>
+      <button mat-button>
+        <mat-icon>info_outline</mat-icon
+        ><span class="toolbar-item-text">Acerca de</span>
+      </button>
+      <div class="help">
+        <button mat-stroked-button class="help-button">
+          <mat-icon
+            class="help-button-icon"
+            aria-hidden="false"
+            aria-label="Help icon"
+            >live_help</mat-icon
+          ><span class="toolbar-item-text">Ayuda</span>
+        </button>
+      </div>
+    </div>
   </mat-sidenav>
   <mat-sidenav-content id="sidenav-content">
     <div class="toggle-button-container">
@@ -39,13 +67,36 @@
                   alt="{{ employee?.name }}"
                 />
                 <span class="employee-title">{{ employee?.name }}</span>
+                <mat-icon id="role-icon">work</mat-icon>
                 <span class="employee-role">{{ employee?.jobTitle }}</span>
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <mat-panel-description>
-              <span>{{ employee?.phone }}</span>
-              <span>{{ employee?.email }}</span>
+            <mat-panel-description class="employee-panel-description">
+              <div class="phone-detail">
+                <mat-icon aria-hidden="false" aria-label="Phone icon"
+                  >phone</mat-icon
+                >
+                <span>{{ employee?.phone }}</span>
+              </div>
+              <div class="email-detail">
+                <mat-icon aria-hidden="false" aria-label="Email icon"
+                  >email</mat-icon
+                >
+                <span>{{ employee?.email }}</span>
+              </div>
             </mat-panel-description>
+            <mat-action-row class="employee-panel-action-row">
+              <button mat-button color="primary">
+                <mat-icon aria-hidden="false" aria-label="Edit icon"
+                  >edit</mat-icon
+                >
+              </button>
+              <button mat-button color="warn">
+                <mat-icon aria-hidden="false" aria-label="Delete icon"
+                  >delete</mat-icon
+                >
+              </button>
+            </mat-action-row>
           </mat-expansion-panel>
         </mat-accordion>
       </mat-grid-list>
