@@ -29,6 +29,38 @@ mat-sidenav-content {
   background-color: colors.$marine;
   border-right: 0;
   width: 15vw;
+  .side-toolbar {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    padding-left: 0.5rem;
+    button {
+      background-color: rgba($color: colors.$sky-celeste, $alpha: 0.05);
+      border-radius: 10px;
+      width: 9.5rem;
+      text-align: left;
+      color: white;
+      margin-bottom: 2rem;
+    }
+    .toolbar-item-text {
+      padding-left: 1rem;
+    }
+    .help {
+      padding-left: 0.75rem;
+      padding-top: 12rem;
+      .help-button {
+        align-self: center;
+        width: auto;
+        margin: 1rem 1rem 0 1rem;
+        font-size: 0.725rem;
+        color: colors.$sky-celeste;
+        background-color: white;
+      }
+      .toolbar-item-text {
+        padding-left: 0.5rem;
+      }
+    }
+  }
 }
 
 .toggle-button-container {
@@ -36,7 +68,6 @@ mat-sidenav-content {
   padding: 0;
   position: sticky;
   top: -10px;
-  max-width: fit-content;
 }
 
 .inverse-border-radius-bot,
