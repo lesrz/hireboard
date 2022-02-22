@@ -1,0 +1,65 @@
+<form class="form">
+  <h1 mat-dialog-title>Editar Empleado</h1>
+
+  <table class="form-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="form-full-width" appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="form-full-width" appearance="outline">
+          <mat-label>Apellido</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <p>
+    <mat-form-field class="form-full-width" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        [formControl]="emailFormControl"
+        [errorStateMatcher]="matcher"
+        placeholder="Ej. juan@ejemplo.com"
+      />
+      <mat-error
+        *ngIf="
+          emailFormControl.hasError('email') &&
+          !emailFormControl.hasError('required')
+        "
+        >Por favor, ingrese un email válido</mat-error
+      >
+      <mat-error *ngIf="emailFormControl.hasError('required')"
+        >Dirección de email <strong>requerida</strong></mat-error
+      >
+    </mat-form-field>
+  </p>
+
+  <table class="form-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="form-full-width" appearance="outline">
+          <mat-label>Teléfono</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="form-full-width" appearance="outline">
+          <mat-label>Puesto</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <mat-form-field class="form-full-width" appearance="outline">
+    <mat-label>Foto de Perfil (URL)</mat-label>
+    <input matInput />
+  </mat-form-field>
+</form>
