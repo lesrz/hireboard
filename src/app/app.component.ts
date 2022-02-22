@@ -20,7 +20,6 @@ import { EmployeeService } from './employee.service';
 export class AppComponent implements OnInit {
   opened = false;
   public employees: Employee[] = [];
-  @Input() workedEmployee!: Employee;
 
   constructor(
     private employeeService: EmployeeService,
@@ -42,33 +41,50 @@ export class AppComponent implements OnInit {
     });
   }
 
-  public openDialog(employee: Employee, dialogType: string): void {
+  public openDialog(employee: Employee | null, dialogType: string): void {
     const dialogConfig: MatDialogConfig = new MatDialogConfig();
 
-    dialogConfig.autoFocus = true;
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = false;
+    dialogConfig.data = {
+      id: employee?.id,
+      name: employee?.name,
+      email: employee?.email,
+      jobTitle: employee?.jobTitle,
+      phone: employee?.phone,
+      imgUrl: employee?.imgUrl,
+      code: employee?.employeeCode,
+    };
 
     switch (dialogType) {
       case 'add':
-        this.dialog.open(AddDialogComponent, dialogConfig);
+        document.getElementById('add-employee-form')?.click();
+        dialogConfig.data = {
+          name: employee?.name,
+          email: employee?.email,
+          jobTitle: employee?.jobTitle,
+          phone: employee?.phone,
+          imgUrl: employee?.imgUrl,
+        };
+        let addDialogRef = this.dialog.open(AddDialogComponent, dialogConfig);
+        addDialogRef.afterClosed().subscribe(() => {
+          this.getEmployees();
+        });
         break;
       case 'edit':
-        this.workedEmployee = employee;
-        dialogConfig.data = {
-          id: this.workedEmployee.id,
-          name: this.workedEmployee.name,
-          email: this.workedEmployee.email,
-          jobTitle: this.workedEmployee.jobTitle,
-          phone: this.workedEmployee.phone,
-          imgUrl: this.workedEmployee.imgUrl,
-          code: this.workedEmployee.employeeCode,
-        };
         let dialogRef = this.dialog.open(EditDialogComponent, dialogConfig);
         dialogRef.afterClosed().subscribe(() => {
           this.getEmployees();
         });
         break;
       case 'delete':
-        this.dialog.open(DeleteDialogComponent, dialogConfig);
+        let delDialogRef = this.dialog.open(
+          DeleteDialogComponent,
+          dialogConfig
+        );
+        delDialogRef.afterClosed().subscribe(() => {
+          this.getEmployees();
+        });
         break;
       default:
         console.log('No dialog pop-up for this button');
