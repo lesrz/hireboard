@@ -1,1 +1,64 @@
-<p>add-dialog works!</p>
+<div mat-dialog-content>
+  <h1 mat-dialog-title>Agregar Empleado</h1>
+  <form class="form" #addForm="ngForm" (ngSubmit)="onAddEmployee(addForm)">
+    <table class="form-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="form-full-width" appearance="outline">
+            <mat-label>Nombre Completo</mat-label>
+            <input matInput ngModel name="name" />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <p class="email-form">
+      <mat-form-field class="form-full-width" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          ngModel
+          name="email"
+          type="email"
+          matInput
+          placeholder="Ej. juan@ejemplo.com"
+        />
+      </mat-form-field>
+    </p>
+
+    <table class="form-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="form-full-width" appearance="outline">
+            <mat-label>Teléfono</mat-label>
+            <input matInput ngModel name="phone" />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="form-full-width" appearance="outline">
+            <mat-label>Puesto</mat-label>
+            <input matInput ngModel name="jobTitle" />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <mat-form-field class="form-full-width" appearance="outline">
+      <mat-label>URL Imagen de Perfil</mat-label>
+      <input matInput ngModel name="imgUrl" />
+    </mat-form-field>
+    <div mat-dialog-actions>
+      <button
+        id="add-employee-form"
+        mat-stroked-button
+        type="button"
+        color="warn"
+        (click)="onNoClick()"
+      >
+        <mat-icon>cancel</mat-icon>
+      </button>
+      <button mat-stroked-button color="primary" type="submit">
+        <mat-icon>person_add</mat-icon>
+      </button>
+    </div>
+  </form>
+</div>
