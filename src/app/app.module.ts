@@ -6,9 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
+import { EditDialogComponent } from './components/shared/edit-dialog/edit-dialog.component';
+import { AddDialogComponent } from './components/shared/add-dialog/add-dialog.component';
+import { DeleteDialogComponent } from './components/shared/delete-dialog/delete-dialog.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, EditDialogComponent, AddDialogComponent, DeleteDialogComponent],
+  entryComponents: [EditDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
