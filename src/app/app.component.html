@@ -48,7 +48,16 @@
       <div class="inverse-border-radius-bot"></div>
     </div>
     <div class="main-content">
-      <div id="employee-grid-title" class="mat-subheading-1">Empleados</div>
+      <div class="employee-header">
+        <div id="employee-grid-title" class="mat-subheading-1">Empleados</div>
+        <button
+          id="add-employee-button"
+          mat-stroked-button
+          (click)="openDialog(null, 'add')"
+        >
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
       <mat-grid-list class="employee-grid" cols="1" rowHeight="160px">
         <mat-accordion class="employee-accordion">
           <mat-expansion-panel
