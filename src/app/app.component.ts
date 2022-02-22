@@ -1,6 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Component, Input, OnInit } from '@angular/core';
+import {
+  MatDialog,
+  MatDialogConfig,
+  MatDialogRef,
+} from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 import { AddDialogComponent } from './components/shared/add-dialog/add-dialog.component';
 import { DeleteDialogComponent } from './components/shared/delete-dialog/delete-dialog.component';
 import { EditDialogComponent } from './components/shared/edit-dialog/edit-dialog.component';
@@ -15,6 +20,7 @@ import { EmployeeService } from './employee.service';
 export class AppComponent implements OnInit {
   opened = false;
   public employees: Employee[] = [];
+  @Input() workedEmployee!: Employee;
 
   constructor(
     private employeeService: EmployeeService,
@@ -26,27 +32,40 @@ export class AppComponent implements OnInit {
   }
 
   public getEmployees(): void {
-    this.employeeService.getEmployees().subscribe(
-      (response: Employee[]) => {
+    this.employeeService.getEmployees().subscribe({
+      next: (response: Employee[]) => {
         this.employees = response;
       },
-      (error: HttpErrorResponse) => {
+      error: (error: HttpErrorResponse) => {
         alert(error.message);
-      }
-    );
+      },
+    });
   }
 
-  public openDialog(dialogType: string): void {
+  public openDialog(employee: Employee, dialogType: string): void {
     const dialogConfig: MatDialogConfig = new MatDialogConfig();
 
-    dialogConfig.autoFocus = false;
+    dialogConfig.autoFocus = true;
 
     switch (dialogType) {
       case 'add':
         this.dialog.open(AddDialogComponent, dialogConfig);
         break;
       case 'edit':
-        this.dialog.open(EditDialogComponent, dialogConfig);
+        this.workedEmployee = employee;
+        dialogConfig.data = {
+          id: this.workedEmployee.id,
+          name: this.workedEmployee.name,
+          email: this.workedEmployee.email,
+          jobTitle: this.workedEmployee.jobTitle,
+          phone: this.workedEmployee.phone,
+          imgUrl: this.workedEmployee.imgUrl,
+          code: this.workedEmployee.employeeCode,
+        };
+        let dialogRef = this.dialog.open(EditDialogComponent, dialogConfig);
+        dialogRef.afterClosed().subscribe(() => {
+          this.getEmployees();
+        });
         break;
       case 'delete':
         this.dialog.open(DeleteDialogComponent, dialogConfig);
