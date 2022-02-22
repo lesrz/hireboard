@@ -1,1 +1,10 @@
-<p>delete-dialog works!</p>
+<h1>Eliminará a {{ data.name }}</h1>
+<h3>¿Confirmar?</h3>
+<mat-dialog-actions>
+  <button mat-stroked-button color="primary" (click)="onNoClick()">
+    <mat-icon>cancel</mat-icon>
+  </button>
+  <button mat-stroked-button color="warn" (click)="onDeleteEmployee(data.id)">
+    <mat-icon>delete</mat-icon>
+  </button>
+</mat-dialog-actions>
