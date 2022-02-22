@@ -1,65 +1,66 @@
-<form class="form">
+<div mat-dialog-content>
   <h1 mat-dialog-title>Editar Empleado</h1>
+  <form class="form" #editForm="ngForm">
+    <table class="form-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="form-full-width" appearance="outline">
+            <mat-label>Nombre Completo</mat-label>
+            <input matInput name="name" ngModel="{{ data.name }}" />
+          </mat-form-field>
+        </td>
+      </tr>
+      <input type="hidden" name="id" ngModel="{{ data.id }}" />
+      <input type="hidden" name="code" ngModel="{{ data.code }}" />
+    </table>
 
-  <table class="form-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="form-full-width" appearance="outline">
-          <mat-label>Nombre</mat-label>
-          <input matInput />
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="form-full-width" appearance="outline">
-          <mat-label>Apellido</mat-label>
-          <input matInput />
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
+    <p>
+      <mat-form-field class="form-full-width" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          name="email"
+          ngModel="{{ data.email }}"
+          type="email"
+          matInput
+          placeholder="Ej. juan@ejemplo.com"
+        />
+      </mat-form-field>
+    </p>
 
-  <p>
+    <table class="form-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="form-full-width" appearance="outline">
+            <mat-label>Teléfono</mat-label>
+            <input matInput name="phone" ngModel="{{ data.phone }}" />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="form-full-width" appearance="outline">
+            <mat-label>Puesto</mat-label>
+            <input matInput name="jobTitle" ngModel="{{ data.jobTitle }}" />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
     <mat-form-field class="form-full-width" appearance="outline">
-      <mat-label>Email</mat-label>
-      <input
-        type="email"
-        matInput
-        [formControl]="emailFormControl"
-        [errorStateMatcher]="matcher"
-        placeholder="Ej. juan@ejemplo.com"
-      />
-      <mat-error
-        *ngIf="
-          emailFormControl.hasError('email') &&
-          !emailFormControl.hasError('required')
-        "
-        >Por favor, ingrese un email válido</mat-error
-      >
-      <mat-error *ngIf="emailFormControl.hasError('required')"
-        >Dirección de email <strong>requerida</strong></mat-error
-      >
+      <mat-label>Foto de Perfil (URL)</mat-label>
+      <input matInput name="imgUrl" ngModel="{{ data.imgUrl }}" />
     </mat-form-field>
-  </p>
-
-  <table class="form-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="form-full-width" appearance="outline">
-          <mat-label>Teléfono</mat-label>
-          <input matInput />
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="form-full-width" appearance="outline">
-          <mat-label>Puesto</mat-label>
-          <input matInput />
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
-
-  <mat-form-field class="form-full-width" appearance="outline">
-    <mat-label>Foto de Perfil (URL)</mat-label>
-    <input matInput />
-  </mat-form-field>
-</form>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button color="warn" (click)="onNoClick()">
+    <mat-icon>cancel</mat-icon>
+  </button>
+  <button
+    mat-stroked-button
+    color="primary"
+    type="submit"
+    (click)="onEditEmployee(editForm.value)"
+    [mat-dialog-close]="data"
+  >
+    <mat-icon>save</mat-icon>
+  </button>
+</div>
