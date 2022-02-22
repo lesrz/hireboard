@@ -1,34 +1,16 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input, Optional } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import {
-  FormControl,
-  ReactiveFormsModule,
-  FormGroupDirective,
-  NgForm,
-  Validators,
-} from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
-
+import { EmployeeService } from 'src/app/employee.service';
+import { Employee } from 'src/app/employee';
+import { HttpErrorResponse } from '@angular/common/http';
 export interface DialogData {
+  id: number;
   name: string;
   email: string;
   jobTitle: string;
   phone: string;
   imgUrl: string;
-}
-
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(
-    control: FormControl | null,
-    form: FormGroupDirective | NgForm | null
-  ): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(
-      control &&
-      control.invalid &&
-      (control.dirty || control.touched || isSubmitted)
-    );
-  }
+  code: string;
 }
 
 @Component({
@@ -37,21 +19,27 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./edit-dialog.component.scss'],
 })
 export class EditDialogComponent implements OnInit {
+  @Input() editEmployee!: Employee;
   constructor(
+    private employeeService: EmployeeService,
     public dialogRef: MatDialogRef<EditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {}
-
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
-
-  matcher = new MyErrorStateMatcher();
 
   ngOnInit(): void {}
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  public onEditEmployee(employee: Employee): void {
+    this.employeeService.updateEmployees(employee).subscribe({
+      next: (response: Employee) => {
+        console.log(response);
+      },
+      error: (error: HttpErrorResponse) => {
+        alert(error.message);
+      },
+    });
   }
 }
