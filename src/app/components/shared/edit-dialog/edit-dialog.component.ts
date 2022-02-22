@@ -3,15 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EmployeeService } from 'src/app/employee.service';
 import { Employee } from 'src/app/employee';
 import { HttpErrorResponse } from '@angular/common/http';
-export interface DialogData {
-  id: number;
-  name: string;
-  email: string;
-  jobTitle: string;
-  phone: string;
-  imgUrl: string;
-  code: string;
-}
+import { DialogData } from '../dialog-data';
 
 @Component({
   selector: 'app-edit-dialog',
@@ -19,11 +11,10 @@ export interface DialogData {
   styleUrls: ['./edit-dialog.component.scss'],
 })
 export class EditDialogComponent implements OnInit {
-  @Input() editEmployee!: Employee;
   constructor(
     private employeeService: EmployeeService,
     public dialogRef: MatDialogRef<EditDialogComponent>,
-    @Optional() @Inject(MAT_DIALOG_DATA) public data: DialogData
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {}
 
   ngOnInit(): void {}
@@ -33,12 +24,15 @@ export class EditDialogComponent implements OnInit {
   }
 
   public onEditEmployee(employee: Employee): void {
-    this.employeeService.updateEmployees(employee).subscribe({
+    this.employeeService.updateEmployee(employee).subscribe({
       next: (response: Employee) => {
-        console.log(response);
+        this.dialogRef.close(response);
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);
+      },
+      complete: () => {
+        this.dialogRef.close();
       },
     });
   }
