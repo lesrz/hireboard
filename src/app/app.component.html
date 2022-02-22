@@ -86,12 +86,20 @@
               </div>
             </mat-panel-description>
             <mat-action-row class="employee-panel-action-row">
-              <button mat-button color="primary" (click)="openDialog('edit')">
+              <button
+                mat-button
+                color="primary"
+                (click)="openDialog(employee, 'edit')"
+              >
                 <mat-icon aria-hidden="false" aria-label="Edit icon"
                   >edit</mat-icon
                 >
               </button>
-              <button mat-button color="warn" (click)="openDialog('delete')">
+              <button
+                mat-button
+                color="warn"
+                (click)="openDialog(employee, 'delete')"
+              >
                 <mat-icon aria-hidden="false" aria-label="Delete icon"
                   >delete</mat-icon
                 >
