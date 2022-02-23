@@ -5,5 +5,6 @@ export interface DialogData {
   jobTitle: string;
   phone: string;
   imgUrl: string;
+  birthday: string;
   code: string;
 }
