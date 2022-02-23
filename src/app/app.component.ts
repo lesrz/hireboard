@@ -1,11 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
-import {
-  MatDialog,
-  MatDialogConfig,
-  MatDialogRef,
-} from '@angular/material/dialog';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddDialogComponent } from './components/shared/add-dialog/add-dialog.component';
 import { DeleteDialogComponent } from './components/shared/delete-dialog/delete-dialog.component';
 import { EditDialogComponent } from './components/shared/edit-dialog/edit-dialog.component';
@@ -53,6 +48,7 @@ export class AppComponent implements OnInit {
       jobTitle: employee?.jobTitle,
       phone: employee?.phone,
       imgUrl: employee?.imgUrl,
+      birthday: employee?.birthday,
       code: employee?.employeeCode,
     };
 
@@ -88,6 +84,24 @@ export class AppComponent implements OnInit {
         break;
       default:
         console.log('No dialog pop-up for this button');
+    }
+  }
+
+  public searchEmployees(key: string): void {
+    const results: Employee[] = [];
+    for (const employee of this.employees) {
+      if (
+        employee.name.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
+        employee.email.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
+        employee.phone.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
+        employee.jobTitle.toLowerCase().indexOf(key.toLowerCase()) !== -1
+      ) {
+        results.push(employee);
+      }
+    }
+    this.employees = results;
+    if (results.length === 0 || !key) {
+      this.getEmployees();
     }
   }
 }
