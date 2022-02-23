@@ -57,7 +57,7 @@
         >
           <mat-icon>add</mat-icon>
         </button>
-        <mat-form-field id="search-bar" appearance="fill">
+        <mat-form-field id="search-bar" appearance="standard">
           <input
             matInput
             id="search-input"
@@ -70,71 +70,73 @@
           />
         </mat-form-field>
       </div>
-      <mat-grid-list class="employee-grid" cols="1" rowHeight="160px">
-        <mat-accordion class="employee-accordion">
-          <mat-expansion-panel
-            class="employee-panel"
-            *ngFor="let employee of employees"
-          >
-            <mat-expansion-panel-header
-              class="employee-panel-header"
-              collapsedHeight="80px"
-              expandedHeight="*"
+      <div class="main-content-grid">
+        <mat-grid-list class="employee-grid" cols="1" rowHeight="160px">
+          <mat-accordion class="employee-accordion">
+            <mat-expansion-panel
+              class="employee-panel"
+              *ngFor="let employee of employees"
             >
-              <mat-panel-title class="employee-panel-title">
-                <img
-                  class="employee-img"
-                  src="{{ employee?.imgUrl }}"
-                  alt="{{ employee?.name }}"
-                />
-                <span class="employee-title">{{ employee?.name }}</span>
-                <mat-icon id="role-icon">work</mat-icon>
-                <span class="employee-role">{{ employee?.jobTitle }}</span>
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <mat-panel-description class="employee-panel-description">
-              <div class="phone-detail">
-                <mat-icon aria-hidden="false" aria-label="Phone icon"
-                  >phone</mat-icon
-                >
-                <span>{{ employee?.phone }}</span>
-              </div>
-              <div class="email-detail">
-                <mat-icon aria-hidden="false" aria-label="Email icon"
-                  >email</mat-icon
-                >
-                <span>{{ employee?.email }}</span>
-              </div>
-              <div class="birthday-detail">
-                <mat-icon aria-hidden="false" aria-label="Birthday icon"
-                  >cake</mat-icon
-                >
-                <span>{{ employee?.birthday }}</span>
-              </div>
-            </mat-panel-description>
-            <mat-action-row class="employee-panel-action-row">
-              <button
-                mat-button
-                color="primary"
-                (click)="openDialog(employee, 'edit')"
+              <mat-expansion-panel-header
+                class="employee-panel-header"
+                collapsedHeight="80px"
+                expandedHeight="*"
               >
-                <mat-icon aria-hidden="false" aria-label="Edit icon"
-                  >edit</mat-icon
+                <mat-panel-title class="employee-panel-title">
+                  <img
+                    class="employee-img"
+                    src="{{ employee?.imgUrl }}"
+                    alt="{{ employee?.name }}"
+                  />
+                  <span class="employee-title">{{ employee?.name }}</span>
+                  <mat-icon id="role-icon">work</mat-icon>
+                  <span class="employee-role">{{ employee?.jobTitle }}</span>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-panel-description class="employee-panel-description">
+                <div class="phone-detail">
+                  <mat-icon aria-hidden="false" aria-label="Phone icon"
+                    >phone</mat-icon
+                  >
+                  <span>{{ employee?.phone }}</span>
+                </div>
+                <div class="email-detail">
+                  <mat-icon aria-hidden="false" aria-label="Email icon"
+                    >email</mat-icon
+                  >
+                  <span>{{ employee?.email }}</span>
+                </div>
+                <div class="birthday-detail">
+                  <mat-icon aria-hidden="false" aria-label="Birthday icon"
+                    >cake</mat-icon
+                  >
+                  <span>{{ employee?.birthday }}</span>
+                </div>
+              </mat-panel-description>
+              <mat-action-row class="employee-panel-action-row">
+                <button
+                  mat-button
+                  color="primary"
+                  (click)="openDialog(employee, 'edit')"
                 >
-              </button>
-              <button
-                mat-button
-                color="warn"
-                (click)="openDialog(employee, 'delete')"
-              >
-                <mat-icon aria-hidden="false" aria-label="Delete icon"
-                  >delete</mat-icon
+                  <mat-icon aria-hidden="false" aria-label="Edit icon"
+                    >edit</mat-icon
+                  >
+                </button>
+                <button
+                  mat-button
+                  color="warn"
+                  (click)="openDialog(employee, 'delete')"
                 >
-              </button>
-            </mat-action-row>
-          </mat-expansion-panel>
-        </mat-accordion>
-      </mat-grid-list>
+                  <mat-icon aria-hidden="false" aria-label="Delete icon"
+                    >delete</mat-icon
+                  >
+                </button>
+              </mat-action-row>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </mat-grid-list>
+      </div>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
