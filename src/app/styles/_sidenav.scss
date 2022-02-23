@@ -119,3 +119,8 @@ mat-sidenav-content {
   border-radius: 0px 0px 0px 15px;
   box-shadow: -10px 10px 0 10px colors.$marine;
 }
+
+.mat-grid-list {
+  height: auto !important;
+  margin-bottom: 3rem;
+}
