@@ -13,16 +13,17 @@ mat-sidenav-content {
 }
 
 #sidenav-content {
+  background-color: #ffffff;
   display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: 50px 1fr;
+  grid-template-rows: 1fr;
+  grid-template-columns: 3rem 1fr;
   padding: 0px;
 }
 
 .employee-header {
   display: flex;
   align-items: center;
-  padding: 3.25rem 0 2rem 5.5rem;
+  padding: 2.125rem 0 2rem 5.5rem;
   #employee-grid-title {
     align-self: center;
     margin: 0;
@@ -45,12 +46,17 @@ mat-sidenav-content {
 .sidenav {
   background-color: colors.$marine;
   border-right: 0;
-  width: 15vw;
   .side-toolbar {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 90% 10%;
+    gap: 5rem;
     margin-top: 2rem;
     padding-left: 0.5rem;
+    .nav-items {
+      display: flex;
+      flex-direction: column;
+    }
     button {
       background-color: rgba($color: colors.$sky-celeste, $alpha: 0.05);
       border-radius: 10px;
@@ -64,7 +70,6 @@ mat-sidenav-content {
     }
     .help {
       padding-left: 0.75rem;
-      padding-top: 12rem;
       .help-button {
         align-self: center;
         width: auto;
@@ -81,50 +86,26 @@ mat-sidenav-content {
 }
 
 .toggle-button-container {
-  margin: 0;
-  padding: 0;
-  position: sticky;
-  top: -10px;
-}
-
-.inverse-border-radius-bot,
-.inverse-border-radius-top {
-  border: none;
-}
-
-.mat-flat-button {
-  position: sticky;
-  background-color: colors.$marine !important;
-  color: white;
-  top: 10px;
-  left: -26px;
-  height: 48px;
-  min-width: auto;
-  font-size: 1.325rem;
-  border-radius: 0px 15px 15px 0px;
-}
-
-.inverse-border-radius-bot {
-  background-color: transparent;
-  width: 20px;
-  height: 40px;
-  position: sticky;
-  left: -26px;
-  border-radius: 15px 0px 0px 0px;
-  box-shadow: 0 -15px 0 0 colors.$marine;
-}
-
-.inverse-border-radius-top {
-  width: 20px;
-  height: 40px;
-  position: sticky;
-  left: 0px;
-  background-color: transparent;
-  border-radius: 0px 0px 0px 15px;
-  box-shadow: -10px 10px 0 10px colors.$marine;
+  #btn-toggle-sidenav {
+    position: sticky;
+    border-radius: 15px;
+    top: 3rem;
+    margin-left: 1.75rem;
+    height: 2rem;
+    .mat-icon {
+      padding: 0px;
+      font-size: 1.125rem;
+    }
+  }
 }
 
 .mat-grid-list {
   height: auto !important;
   margin-bottom: 3rem;
+}
+
+.mat-drawer {
+  display: flex;
+  flex-direction: column;
+  align-items: center !important;
 }
