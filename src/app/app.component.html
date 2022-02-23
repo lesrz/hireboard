@@ -1,11 +1,14 @@
 <mat-sidenav-container>
+  <!-- Sidebar -->
   <mat-sidenav #sidenav class="sidenav" mode="side" [(opened)]="opened">
+    <!-- Brand box -->
     <div class="branding-box">
       <a href="/" class="branding-box-link">
         <div id="branding" class="mat-display-1">hireboard</div>
         <div id="color-line" class="mat-display-1">l</div>
       </a>
     </div>
+    <!-- Sidebar Items -->
     <div class="side-toolbar">
       <button mat-button>
         <mat-icon>home</mat-icon>
@@ -35,6 +38,7 @@
       </div>
     </div>
   </mat-sidenav>
+  <!-- Main Content -->
   <mat-sidenav-content id="sidenav-content">
     <div class="toggle-button-container">
       <div class="inverse-border-radius-top"></div>
