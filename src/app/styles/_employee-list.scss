@@ -56,7 +56,8 @@
     height: 2rem;
     justify-content: space-around;
     .phone-detail,
-    .email-detail {
+    .email-detail,
+    .birthday-detail {
       color: colors.$marine;
       display: flex;
       flex-direction: row;
