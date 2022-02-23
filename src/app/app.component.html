@@ -10,22 +10,20 @@
     </div>
     <!-- Sidebar Items -->
     <div class="side-toolbar">
-      <button mat-button>
-        <mat-icon>home</mat-icon>
-        <span class="toolbar-item-text">Inicio</span>
-      </button>
-      <button mat-button>
-        <mat-icon>people</mat-icon>
-        <span class="toolbar-item-text">Empleados</span>
-      </button>
-      <button mat-button>
-        <mat-icon>event_note</mat-icon>
-        <span class="toolbar-item-text">Proyectos</span>
-      </button>
-      <button mat-button>
-        <mat-icon>info_outline</mat-icon
-        ><span class="toolbar-item-text">Acerca de</span>
-      </button>
+      <div class="nav-items">
+        <button mat-button>
+          <mat-icon>people</mat-icon>
+          <span class="toolbar-item-text">Empleados</span>
+        </button>
+        <button mat-button>
+          <mat-icon>event_note</mat-icon>
+          <span class="toolbar-item-text">Proyectos</span>
+        </button>
+        <button mat-button>
+          <mat-icon>info_outline</mat-icon
+          ><span class="toolbar-item-text">Acerca de</span>
+        </button>
+      </div>
       <div class="help">
         <button mat-stroked-button class="help-button">
           <mat-icon
@@ -41,15 +39,13 @@
   <!-- Main Content -->
   <mat-sidenav-content id="sidenav-content">
     <div class="toggle-button-container">
-      <div class="inverse-border-radius-top"></div>
       <button
-        mat-flat-button
+        mat-stroked-button
         id="btn-toggle-sidenav"
         (click)="sidenav.toggle()"
       >
-        ≡
+        <mat-icon>menu</mat-icon>
       </button>
-      <div class="inverse-border-radius-bot"></div>
     </div>
     <div class="main-content">
       <div class="employee-header">
