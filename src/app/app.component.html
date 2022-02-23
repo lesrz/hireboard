@@ -57,6 +57,18 @@
         >
           <mat-icon>add</mat-icon>
         </button>
+        <mat-form-field id="search-bar" appearance="fill">
+          <input
+            matInput
+            id="search-input"
+            type="search"
+            name="key"
+            placeholder="Buscar..."
+            (ngModelChange)="searchEmployees(key.value)"
+            #key="ngModel"
+            ngModel
+          />
+        </mat-form-field>
       </div>
       <mat-grid-list class="employee-grid" cols="1" rowHeight="160px">
         <mat-accordion class="employee-accordion">
@@ -92,6 +104,12 @@
                   >email</mat-icon
                 >
                 <span>{{ employee?.email }}</span>
+              </div>
+              <div class="birthday-detail">
+                <mat-icon aria-hidden="false" aria-label="Birthday icon"
+                  >cake</mat-icon
+                >
+                <span>{{ employee?.birthday }}</span>
               </div>
             </mat-panel-description>
             <mat-action-row class="employee-panel-action-row">
