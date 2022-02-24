@@ -65,12 +65,18 @@ export class AppComponent implements OnInit {
         let addDialogRef = this.dialog.open(AddDialogComponent, dialogConfig);
         addDialogRef.afterClosed().subscribe(() => {
           this.getEmployees();
+          console.table(this.employees);
         });
         break;
       case 'edit':
         let dialogRef = this.dialog.open(EditDialogComponent, dialogConfig);
-        dialogRef.afterClosed().subscribe(() => {
-          this.getEmployees();
+        dialogRef.afterClosed().subscribe({
+          next: () => {
+            this.getEmployees();
+          },
+          complete: () => {
+            console.table(this.employees);
+          },
         });
         break;
       case 'delete':
@@ -80,6 +86,7 @@ export class AppComponent implements OnInit {
         );
         delDialogRef.afterClosed().subscribe(() => {
           this.getEmployees();
+          console.table(this.employees);
         });
         break;
       default:
